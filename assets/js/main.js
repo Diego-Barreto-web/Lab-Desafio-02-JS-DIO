@@ -1,28 +1,16 @@
 
 function updateProfileInfo(profileData) {
 
-    const photo = document.getElementById('profile.photo')
-    photo.src = profileData.photo
-    photo.alt = profileData.name
-
-    const name = document.getElementById('profile.name')
-    name.innerText = profileData.name
-
-    const job = document.getElementById('profile.job')
-    job.innerText = profileData.job
-    job.href = profileData.linkedin
-
-    const location = document.getElementById('profile.location')
-    location.innerText = profileData.location
-
-    const phone = document.getElementById('profile.phone')
-    phone.innerText = profileData.phone
-    phone.href = `tel:${profileData.phone}`
-
-    const email = document.getElementById('profile.email')
-    email.innerText = profileData.email
-    email.href = `mailto:${profileData.email}`
-
+    const profHeader = document.getElementById('profile.header')
+    return profHeader.innerHTML = `
+    <img class="photo" src="${profileData.photo}" alt="Foto de ${profileData.name}">
+    <h1 class="title">Olá, <br>eu sou <span>${profileData.name}</span></h1>
+    <div class="information">
+        <p class="job"><a href="${profileData.linkedin}" target="_blank">${profileData.job}</a></p>
+        <p class="location">${profileData.location}</p>
+        <p class="phone"><a href="tel:${profileData.phone}" target="_blank">${profileData.phone}</a></p>
+        <p class="email"><a href="mailto:${profileData.email}" target="_blank">${profileData.email}</a></p>
+    </div>`
 } 
 
 function updadeHardSkills(profileData) {
@@ -55,7 +43,15 @@ function updatePortfolio(profileData) {
 }
 
 function updateExperience(profileData) {
-    
+
+    const experience = document.getElementById('profile.professionalExperience')
+    experience.innerHTML = profileData.professionalExperience.map(exp => {
+        return `<li>
+                    <h3 class="title">${exp.name}</h3>
+                    <p class="period">${exp.period}</p>
+                    <p>${exp.description}</p>
+                </li>`
+    })
 }
 
 (async () => {
@@ -67,6 +63,5 @@ function updateExperience(profileData) {
     updadeLanguages(profileData)
     updatePortfolio(profileData)
     updateExperience(profileData)
-    console.log(profileData)
 })()
 
