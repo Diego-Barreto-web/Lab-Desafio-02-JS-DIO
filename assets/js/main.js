@@ -44,7 +44,7 @@ function updadeLanguages(profileData) {
 
 function updatePortfolio(profileData) {
 
-    const portfolio = document.getElementById('porfile.portfolio')
+    const portfolio = document.getElementById('profile.portfolio')
     portfolio.innerHTML = profileData.portfolio.map(project => {
         return `
             <li>
@@ -52,6 +52,10 @@ function updatePortfolio(profileData) {
                 <a href="${project.url}" target="_blank">${project.url}</a>
             </li>`
     }).join('')
+}
+
+function updateExperience(profileData) {
+    
 }
 
 (async () => {
@@ -62,6 +66,7 @@ function updatePortfolio(profileData) {
     updadeSoftSkills(profileData)
     updadeLanguages(profileData)
     updatePortfolio(profileData)
+    updateExperience(profileData)
     console.log(profileData)
 })()
 
