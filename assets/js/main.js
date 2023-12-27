@@ -51,7 +51,7 @@ function updateExperience(profileData) {
                     <p class="period">${exp.period}</p>
                     <p>${exp.description}</p>
                 </li>`
-    })
+    }).join('')
 }
 
 (async () => {
